@@ -8,10 +8,10 @@ A modular WordPress plugin for **Nucleus Advisory's DXP Testing Environment**. P
 
 ## 🚀 Quick Start
 
-1. Upload the `nucleus-dxp/` folder to `wp-content/plugins/`
-2. Activate **"DXP Testing Version"** in WP Admin → Plugins
-3. Create a WordPress page with slug `testing-lab`
-4. Open in Oxygen Builder → Add Shortcode → `[nucleus_testing_page]`
+1. Zip the `nucleus-dxp/` folder
+2. WP Admin → Plugins → Add New → Upload Plugin → Install & Activate
+3. WP Admin → Pages → Add New → Set slug to `testing-lab`
+4. Open in Oxygen Builder → Add Shortcode element → `[nucleus_testing_page]`
 5. Save and visit the page
 
 ---
