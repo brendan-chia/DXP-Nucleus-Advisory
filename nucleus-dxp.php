@@ -1,0 +1,61 @@
+<?php
+/**
+ * Plugin Name: DXP Testing Version
+ * Description: ISOLATED TESTING ENVIRONMENT. Adds Lead Capture System and Analytics features.
+ * Version: 2.0
+ * Author: DXP Team
+ */
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+// Plugin base path
+define('NUCLEUS_DXP_PATH', plugin_dir_path(__FILE__));
+define('NUCLEUS_DXP_URL', plugin_dir_url(__FILE__));
+
+// Load modules
+require_once NUCLEUS_DXP_PATH . 'includes/form-handler.php';
+require_once NUCLEUS_DXP_PATH . 'includes/analytics.php';
+require_once NUCLEUS_DXP_PATH . 'includes/admin-dashboard.php';
+
+// Database table creation on activation
+function nucleus_core_activate_table()
+{
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'nucleus_leads_testing';
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        name tinytext NOT NULL,
+        email varchar(100) NOT NULL,
+        company varchar(100) DEFAULT '' NOT NULL,
+        phone varchar(20) DEFAULT '' NOT NULL,
+        submitted_at datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+        PRIMARY KEY  (id)
+    ) $charset_collate;";
+
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+}
+register_activation_hook(__FILE__, 'nucleus_core_activate_table');
+
+// Testing Page Shortcode — loads template from /templates/
+function nucleus_testing_page_shortcode()
+{
+    ob_start();
+    include NUCLEUS_DXP_PATH . 'templates/testing-page.php';
+    return ob_get_clean();
+}
+add_shortcode('nucleus_testing_page', 'nucleus_testing_page_shortcode');
+
+// Enqueue page CSS and tracking JS on testing page
+function nucleus_dxp_enqueue_assets()
+{
+    if (is_page('testing-lab')) {
+        wp_enqueue_style('nucleus-testing-page', NUCLEUS_DXP_URL . 'assets/css/testing-page.css', array(), '2.0');
+        wp_enqueue_script('nucleus-tracking', NUCLEUS_DXP_URL . 'assets/js/tracking.js', array(), '2.0', true);
+    }
+}
+add_action('wp_enqueue_scripts', 'nucleus_dxp_enqueue_assets');

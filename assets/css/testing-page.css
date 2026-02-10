@@ -1,0 +1,265 @@
+/*
+ * Testing Lab — Landing Page Styles
+ * ==================================
+ * Edit this file to change colors, fonts, spacing, and layout.
+ * HTML template is in: templates/testing-page.php
+ */
+
+/* GLOBAL */
+.nucleus-hero-section,
+.nucleus-features-section,
+.nucleus-services-section,
+.nucleus-cta-section {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #334155;
+    box-sizing: border-box;
+}
+
+.nucleus-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===================== */
+/*     HERO SECTION      */
+/* ===================== */
+.nucleus-hero-section {
+    padding: 180px 0 100px;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.hero-content {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.nucleus-col-left {
+    flex: 1;
+}
+
+.dxp-badge {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 6px 12px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+}
+
+.nucleus-col-left h1 {
+    font-size: 3rem;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    font-weight: 800;
+}
+
+.hero-intro {
+    font-size: 1.25rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.hero-subtext {
+    font-size: 1.1rem;
+    color: #64748b;
+    line-height: 1.6;
+    border-left: 4px solid #0f172a;
+    padding-left: 20px;
+}
+
+/* ===================== */
+/*     LEAD FORM         */
+/* ===================== */
+.nucleus-col-right {
+    flex: 0 0 450px;
+}
+
+.form-wrapper {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e2e8f0;
+}
+
+.form-header h3 {
+    margin: 0 0 8px 0;
+    color: #0f172a;
+    font-size: 1.5rem;
+}
+
+.form-header p {
+    margin: 0 0 24px 0;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* ===================== */
+/*    FEATURES SECTION   */
+/* ===================== */
+.nucleus-features-section {
+    padding: 100px 0;
+    background: #ffffff;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.feature-card {
+    padding: 30px;
+    background: #f8fafc;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background: #f1f5f9;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    color: #0f172a;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* ===================== */
+/*    SERVICES SECTION   */
+/* ===================== */
+.nucleus-services-section {
+    padding: 80px 0 100px;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
+
+.services-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.services-header p {
+    color: #94a3b8;
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+}
+
+.services-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.service-tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 99px;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.service-tag:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===================== */
+/*     CTA SECTION       */
+/* ===================== */
+.nucleus-cta-section {
+    padding: 80px 20px;
+    background: #ffffff;
+    text-align: center;
+}
+
+.nucleus-cta-section h2 {
+    font-size: 2rem;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.nucleus-cta-section p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 40px;
+}
+
+.download-brochure-btn {
+    background-color: #0f172a;
+    color: white;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.download-brochure-btn:hover {
+    background-color: #334155;
+}
+
+/* ===================== */
+/*     RESPONSIVE        */
+/* ===================== */
+@media (max-width: 1024px) {
+    .hero-content {
+        flex-direction: column;
+    }
+
+    .nucleus-col-right {
+        width: 100%;
+        flex: auto;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .nucleus-hero-section {
+        padding-top: 150px;
+        text-align: center;
+    }
+
+    .hero-subtext {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
