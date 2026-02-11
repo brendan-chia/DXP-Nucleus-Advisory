@@ -38,13 +38,13 @@ nucleus-dxp/
 
 | File | Purpose | Who Edits |
 |------|---------|-----------|
-| `nucleus-dxp.php` | Loads modules, registers shortcodes, enqueues assets | Developer |
-| `includes/form-handler.php` | Form HTML, validation, AJAX save to DB | Developer |
-| `includes/analytics.php` | GTM/GA4 IDs and script injection | Developer |
-| `includes/admin-dashboard.php` | WP Admin leads table | Developer |
-| `templates/testing-page.php` | Page content and layout | **Anyone** |
-| `assets/css/testing-page.css` | Visual styling | **Anyone** |
-| `assets/js/tracking.js` | Click event tracking | Developer |
+| `nucleus-dxp.php` | Loads modules, registers shortcodes, enqueues assets | Anyone |
+| `includes/form-handler.php` | Form HTML, validation, AJAX save to DB | Anyone |
+| `includes/analytics.php` | GTM/GA4 IDs and script injection | Backend |
+| `includes/admin-dashboard.php` | WP Admin leads table | Anyone |
+| `templates/testing-page.php` | Page content and layout | **Frontend** |
+| `assets/css/testing-page.css` | Visual styling | **Frontend** |
+| `assets/js/tracking.js` | Click event tracking | Backend |
 
 ---
 
