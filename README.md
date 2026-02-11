@@ -2,7 +2,7 @@
 
 A modular WordPress plugin for **Nucleus Advisory's DXP Testing Environment**. Provides lead capture, analytics tracking, and templated landing pages.
 
-**Live URL:** [nucleusadvisory.co/testing-lab](https://nucleusadvisory.co/testing-lab/)
+**Live URL:** [nucleusadvisory.co/testing-lab](https://nucleusadvisory.co/testing-lab/) (Requires login to Nucleus Advisory WP Admin to view)
 
 ---
 
