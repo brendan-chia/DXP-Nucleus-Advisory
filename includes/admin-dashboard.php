@@ -21,13 +21,12 @@ function nucleus_core_add_admin_menu()
 }
 add_action('admin_menu', 'nucleus_core_add_admin_menu');
 
-function nucleus_core_render_leads_page()
+// Hook CSV export action to admin_init to ensure headers are sent before any output
+function nucleus_core_handle_csv_export()
 {
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'nucleus_leads_testing';
-
-    // --- 1. HANDLE CSV EXPORT ---
     if (isset($_POST['nucleus_export_csv']) && check_admin_referer('nucleus_export_csv_action')) {
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'nucleus_leads_testing';
         $filename = 'nucleus-leads-' . date('Y-m-d') . '.csv';
 
         // Clean buffer to prevent HTML from mixing with CSV
@@ -36,18 +35,36 @@ function nucleus_core_render_leads_page()
 
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename=' . $filename);
+        header('Pragma: no-cache');
+        header('Expires: 0');
 
         $output = fopen('php://output', 'w');
         fputcsv($output, array('ID', 'Name', 'Email', 'Company', 'Phone', 'Date'));
 
+        // Get all data without pagination/filters for the export
         $all_leads = $wpdb->get_results("SELECT * FROM $table_name ORDER BY submitted_at DESC");
+
         foreach ($all_leads as $row) {
-            fputcsv($output, array($row->id, $row->name, $row->email, $row->company, $row->phone, $row->submitted_at));
+            fputcsv($output, array(
+                $row->id,
+                $row->name,
+                $row->email,
+                $row->company,
+                $row->phone,
+                $row->submitted_at
+            ));
         }
 
         fclose($output);
         exit;
     }
+}
+add_action('admin_init', 'nucleus_core_handle_csv_export');
+
+function nucleus_core_render_leads_page()
+{
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'nucleus_leads_testing';
 
     if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
         echo '<div class="wrap"><h1>No Leads Yet</h1><p>Test table does not exist yet. Submit a form to create it.</p></div>';
