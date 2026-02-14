@@ -26,7 +26,7 @@
                     <h3>Get A Glimpse Of Advisory Expertise</h3>
                     <p>Experience how we optimize efficiency and attract top talent.</p>
                 </div>
-                <?php echo do_shortcode('[nucleus_lead_form title="" description=""]'); ?>
+                <?php echo do_shortcode('[contact-form-7 id="5905dba" title="Testing"]'); ?>
             </div>
         </div>
     </div>

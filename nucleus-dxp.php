@@ -54,7 +54,7 @@ add_shortcode('nucleus_testing_page', 'nucleus_testing_page_shortcode');
 function nucleus_dxp_enqueue_assets()
 {
     if (is_page('testing-lab')) {
-        wp_enqueue_style('nucleus-testing-page', NUCLEUS_DXP_URL . 'assets/css/testing-page.css', array(), '2.0');
+        wp_enqueue_style('nucleus-testing-page', NUCLEUS_DXP_URL . 'assets/css/testing-page.css', array(), '2.1');
         wp_enqueue_script('nucleus-tracking', NUCLEUS_DXP_URL . 'assets/js/tracking.js', array(), '2.0', true);
     }
 }

@@ -1,8 +1,7 @@
 /*
  * Testing Lab — Landing Page Styles
  * ==================================
- * Edit this file to change colors, fonts, spacing, and layout.
- * HTML template is in: templates/testing-page.php
+ * Version 2.2 - Force Element Styling
  */
 
 /* GLOBAL */
@@ -88,24 +87,126 @@
     flex: 0 0 450px;
 }
 
+/* Force specific styles on the wrapper */
 .form-wrapper {
-    background: white;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-    border: 1px solid #e2e8f0;
+    background: #ffffff !important;
+    padding: 40px !important;
+    border-radius: 16px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid #e2e8f0 !important;
+    display: block !important;
 }
 
 .form-header h3 {
-    margin: 0 0 8px 0;
-    color: #0f172a;
-    font-size: 1.5rem;
+    margin: 0 0 8px 0 !important;
+    color: #0f172a !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
 }
 
 .form-header p {
-    margin: 0 0 24px 0;
-    color: #64748b;
-    font-size: 0.95rem;
+    margin: 0 0 24px 0 !important;
+    color: #64748b !important;
+    font-size: 0.95rem !important;
+}
+
+/* 
+   FORCE INPUT STYLES 
+   Targeting inputs deeply to override any theme styles 
+*/
+
+/* Labels */
+.form-wrapper label,
+.form-wrapper .wpcf7-list-item-label {
+    display: block !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    color: #1e293b !important;
+    margin-bottom: 6px !important;
+}
+
+/* Text Inputs */
+.form-wrapper input[type="text"],
+.form-wrapper input[type="email"],
+.form-wrapper input[type="tel"],
+.form-wrapper input[type="url"],
+.form-wrapper textarea,
+.form-wrapper select {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 12px 14px !important;
+    margin-bottom: 16px !important;
+
+    background-color: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+
+    font-size: 1rem !important;
+    color: #334155 !important;
+    line-height: 1.5 !important;
+
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Focus State */
+.form-wrapper input[type="text"]:focus,
+.form-wrapper input[type="email"]:focus,
+.form-wrapper input[type="tel"]:focus,
+.form-wrapper textarea:focus,
+.form-wrapper select:focus {
+    background-color: #ffffff !important;
+    border-color: #0f172a !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Submit Button */
+.form-wrapper input[type="submit"],
+.form-wrapper button[type="submit"] {
+    display: block !important;
+    width: 100% !important;
+    padding: 14px 20px !important;
+    margin-top: 10px !important;
+
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+
+    border: none !important;
+    border-radius: 6px !important;
+
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease !important;
+
+    -webkit-appearance: none;
+}
+
+.form-wrapper input[type="submit"]:hover {
+    background-color: #1e293b !important;
+}
+
+/* Fix for Oxygen/Theme overriding spacing */
+.form-wrapper br {
+    display: none !important;
+}
+
+.form-wrapper p {
+    margin-bottom: 0 !important;
+}
+
+/* Contact Form 7 Response Output */
+.wpcf7-response-output {
+    margin: 20px 0 0 0 !important;
+    padding: 12px !important;
+    border-radius: 6px !important;
+    font-size: 0.9rem !important;
+    text-align: center !important;
 }
 
 /* ===================== */
