@@ -127,7 +127,7 @@ function nucleus_core_render_leads_page()
             Showing recent 100 results. Data stored in <code><?php echo esc_html($table_name); ?></code>.
         </p>
 
-        <table class="wp-list-table widefat fixed striped">
+                <table class="wp-list-table widefat fixed striped">
             <thead>
                 <tr>
                     <th width="50">ID</th>
@@ -136,12 +136,13 @@ function nucleus_core_render_leads_page()
                     <th>Company</th>
                     <th>Phone</th>
                     <th width="160">Date Submitted</th>
+                    <th width="80">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if (empty($leads)): ?>
                     <tr>
-                        <td colspan="6" style="text-align: center; padding: 20px; color: #666;">
+                        <td colspan="7" style="text-align: center; padding: 20px; color: #666;">
                             No leads found matching your criteria.
                         </td>
                     </tr>
@@ -158,8 +159,8 @@ function nucleus_core_render_leads_page()
                                 </a>
                             </td>
                             <td>
-                                <?php if ($lead->company): ?>
-                                    <span class="dashicons dashicons-building" style="font-size: 14px; color: #888;"></span>
+                                <?php if($lead->company): ?>
+                                    <span class="dashicons dashicons-building" style="font-size: 14px; color: #888;"></span> 
                                     <?php echo esc_html($lead->company); ?>
                                 <?php else: ?>
                                     <span style="color: #ccc;">—</span>
@@ -168,6 +169,17 @@ function nucleus_core_render_leads_page()
                             <td><?php echo esc_html($lead->phone); ?></td>
                             <td>
                                 <?php echo date('M j, Y g:i a', strtotime($lead->submitted_at)); ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    $delete_url = wp_nonce_url(
+                                        admin_url('admin.php?page=nucleus-leads&action=delete&id=' . $lead->id), 
+                                        'nucleus_delete_lead_' . $lead->id
+                                    ); 
+                                ?>
+                                <a href="<?php echo $delete_url; ?>" onclick="return confirm('Are you sure you want to delete this lead? This cannot be undone.');" style="color: #a00; text-decoration: none;">
+                                    <span class="dashicons dashicons-trash"></span> Delete
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
