@@ -29,6 +29,136 @@ form-handler.php  ──► Saves to WordPress DB (wp_nucleus_leads_testing)
 
 ---
 
+## 🔀 Two Integration Methods
+
+| Method | Approach | Complexity | Service Account Needed? |
+|--------|----------|------------|------------------------|
+| **A — Google Sheets API (Push)** | WordPress pushes each lead to Sheets on form submit | Higher | ✅ Yes |
+| **B — REST API + Apps Script (Pull)** | Google Sheets pulls leads from WordPress REST API on a schedule | **Lower** | ❌ No |
+
+> **Recommended for most cases: Method B.** It's simpler, requires no Google Cloud setup, and the new `rest-api.php` module is already included in the plugin.
+
+---
+
+## 🅱️ Method B — REST API + Apps Script (Simpler)
+
+This method uses the **`includes/rest-api.php`** module already added to the plugin.
+WordPress serves leads as JSON via its built-in REST API. Google Sheets pulls the data using Apps Script.
+
+```
+Google Sheets (Apps Script)  ───GET───►  WordPress REST API
+         │                                    │
+         │                               uses $wpdb internally
+         │                               (no DB credentials exposed)
+         ▼
+   Looker Studio Dashboard
+         ▲
+   Google Analytics (GA4)
+```
+
+### B1 — Verify the REST API Endpoint
+
+After deploying the plugin, the endpoint is live at:
+```
+https://yourdomain.com/wp-json/nucleus/v1/leads?api_key=YOUR_KEY
+```
+
+> ⚠️ **Before deploying:** Open `includes/rest-api.php` and change the `NUCLEUS_API_KEY` constant to a strong, random string.
+
+**Optional parameters:**
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `limit`   | Max rows to return (max 500) | 100 |
+| `offset`  | Skip rows for pagination | 0 |
+| `since`   | Only leads after this date (YYYY-MM-DD) | — |
+
+**Example:**
+```
+/wp-json/nucleus/v1/leads?api_key=YOUR_KEY&limit=200&since=2026-01-01
+```
+
+### B2 — Create the Google Sheet
+
+1. Go to [https://sheets.google.com](https://sheets.google.com) and create a new sheet
+2. Name it: `Nucleus Advisory — Form Leads`
+3. In **Row 1**, add these headers:
+
+| A | B | C | D | E | F |
+|---|---|---|---|---|---|
+| ID | Name | Email | Company | Phone | Submitted At |
+
+### B3 — Add Apps Script to Auto-Pull Data
+
+In your Google Sheet:
+
+1. Go to **Extensions → Apps Script**
+2. Replace the default code with:
+
+```javascript
+/**
+ * Pulls leads from WordPress REST API into this sheet.
+ * Set up a time-based trigger to auto-run every hour or day.
+ */
+function fetchLeads() {
+  var API_URL = 'https://yourdomain.com/wp-json/nucleus/v1/leads';
+  var API_KEY = 'YOUR_SECRET_KEY_HERE'; // Must match NUCLEUS_API_KEY in rest-api.php
+
+  var url = API_URL + '?api_key=' + API_KEY + '&limit=500';
+  var response = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+  var json = JSON.parse(response.getContentText());
+
+  if (!json.leads || json.leads.length === 0) {
+    Logger.log('No leads found or API error.');
+    return;
+  }
+
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+  // Clear existing data (keep row 1 headers)
+  if (sheet.getLastRow() > 1) {
+    sheet.getRange(2, 1, sheet.getLastRow() - 1, 6).clearContent();
+  }
+
+  // Write leads
+  var rows = json.leads.map(function(lead) {
+    return [
+      lead.id,
+      lead.name,
+      lead.email,
+      lead.company,
+      lead.phone,
+      lead.submitted_at
+    ];
+  });
+
+  sheet.getRange(2, 1, rows.length, 6).setValues(rows);
+  Logger.log('Synced ' + rows.length + ' leads.');
+}
+```
+
+3. Click **Save** (💾), then click **Run** to test
+4. Authorize when prompted (it needs permission to fetch URLs and edit the sheet)
+
+### B4 — Set Up Auto-Refresh Trigger
+
+1. In Apps Script → click the **clock icon** (Triggers) in the left sidebar
+2. Click **+ Add Trigger**
+3. Set:
+   - Function: `fetchLeads`
+   - Event source: **Time-driven**
+   - Type: **Hour timer** → Every hour (or **Day timer** if you prefer daily)
+4. Click **Save**
+
+Your Google Sheet will now auto-update with the latest leads!
+
+### B5 — Connect to Looker Studio
+
+Follow the same steps as [Step 4 below](#step-4--connect-google-sheet-to-looker-studio).
+
+---
+
+## 🅰️ Method A — Google Sheets API (Direct Push)
+
 ## ✅ Prerequisites
 
 Before writing any code, the following must be set up:

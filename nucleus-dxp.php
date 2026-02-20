@@ -18,6 +18,7 @@ define('NUCLEUS_DXP_URL', plugin_dir_url(__FILE__));
 require_once NUCLEUS_DXP_PATH . 'includes/form-handler.php';
 require_once NUCLEUS_DXP_PATH . 'includes/analytics.php';
 require_once NUCLEUS_DXP_PATH . 'includes/admin-dashboard.php';
+require_once NUCLEUS_DXP_PATH . 'includes/rest-api.php';
 
 // Database table creation on activation
 function nucleus_core_activate_table()
