@@ -32,6 +32,7 @@ function nucleus_core_activate_table()
         email varchar(100) NOT NULL,
         company varchar(100) DEFAULT '' NOT NULL,
         phone varchar(20) DEFAULT '' NOT NULL,
+        form_data longtext DEFAULT '' NOT NULL,
         submitted_at datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
         PRIMARY KEY  (id)
     ) $charset_collate;";
@@ -40,6 +41,23 @@ function nucleus_core_activate_table()
     dbDelta($sql);
 }
 register_activation_hook(__FILE__, 'nucleus_core_activate_table');
+
+// Force schema update check on admin load (Temporary auto-fix for upgrade)
+function nucleus_core_force_db_update()
+{
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'nucleus_leads_testing';
+
+    // Check if table exists first
+    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") === $table_name) {
+        $row = $wpdb->get_results("SELECT * FROM $table_name LIMIT 1");
+        // If column 'form_data' doesn't exist in the object, run activation
+        if (empty($row) || !isset($row[0]->form_data)) {
+            nucleus_core_activate_table();
+        }
+    }
+}
+add_action('admin_init', 'nucleus_core_force_db_update');
 
 // Testing Page Shortcode — loads template from /templates/
 function nucleus_testing_page_shortcode()
@@ -54,8 +72,8 @@ add_shortcode('nucleus_testing_page', 'nucleus_testing_page_shortcode');
 function nucleus_dxp_enqueue_assets()
 {
     if (is_page('testing-lab')) {
-        wp_enqueue_style('nucleus-testing-page', NUCLEUS_DXP_URL . 'assets/css/testing-page.css', array(), '2.1');
-        wp_enqueue_script('nucleus-tracking', NUCLEUS_DXP_URL . 'assets/js/tracking.js', array(), '2.0', true);
+        wp_enqueue_style('nucleus-testing-page', NUCLEUS_DXP_URL . 'assets/css/testing-page.css', array(), '3.3');
+        wp_enqueue_script('nucleus-tracking', NUCLEUS_DXP_URL . 'assets/js/tracking.js', array(), '2.1', true);
     }
 }
 add_action('wp_enqueue_scripts', 'nucleus_dxp_enqueue_assets');
