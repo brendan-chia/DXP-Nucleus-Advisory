@@ -1,0 +1,324 @@
+/*
+ * ==========================================
+ *  Single Product — Minimalist Design
+ * ==========================================
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --np-dark: #111827;
+    --np-text: #374151;
+    --np-text-light: #6b7280;
+    --np-accent: #2563eb;
+    --np-accent-soft: #eff6ff;
+    --np-border: #e5e7eb;
+    --np-bg: #ffffff;
+    --np-bg-off: #f9fafb;
+    --np-font: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ========== WRAPPER ========== */
+.nucleus-single-product-wrapper {
+    font-family: var(--np-font);
+    color: var(--np-text);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ========== HERO ========== */
+.n-product-hero {
+    background: var(--np-dark);
+    padding: 140px 32px 64px;
+}
+
+.n-product-hero-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 56px;
+    align-items: center;
+}
+
+/* ========== IMAGE ========== */
+.n-product-image-col {
+    display: flex;
+    justify-content: center;
+}
+
+.n-product-image {
+    width: 100%;
+    max-width: 400px;
+    max-height: 480px;
+    object-fit: cover;
+    object-position: top center;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+}
+
+.n-product-image-placeholder {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 3/4;
+    background: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* ========== PRODUCT INFO ========== */
+.n-product-info-col {
+    color: #ffffff;
+}
+
+.n-product-badge {
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 6px 16px;
+    border-radius: 99px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+}
+
+.n-product-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+}
+
+.n-product-subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 28px 0;
+    line-height: 1.5;
+}
+
+.n-product-price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+}
+
+.n-product-summary {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.55);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 24px;
+    max-width: 480px;
+}
+
+/* ========== DETAILS SECTION ========== */
+.n-product-details-section {
+    background: var(--np-bg);
+    padding: 72px 32px 96px;
+}
+
+.n-product-details-inner {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.n-details-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--np-dark);
+    margin: 0 0 40px 0;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--np-dark);
+    display: inline-block;
+}
+
+/* ========== CONTENT ========== */
+.n-details-content {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--np-text);
+}
+
+.n-details-content p {
+    margin-bottom: 24px;
+    color: var(--np-text-light);
+}
+
+.n-details-content h2,
+.n-details-content h3,
+.n-details-content h4 {
+    color: var(--np-dark);
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.15rem;
+}
+
+.n-details-content strong {
+    color: var(--np-dark);
+    font-weight: 600;
+}
+
+/* ========== FIRST LIST — Clean Grid ========== */
+.n-details-content ul:first-of-type {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 48px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.n-details-content ul:first-of-type li {
+    position: relative;
+    padding: 16px 16px 16px 44px;
+    background: var(--np-bg-off);
+    border: 1px solid var(--np-border);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--np-text);
+    margin: 0;
+    transition: border-color 0.2s;
+}
+
+.n-details-content ul:first-of-type li:hover {
+    border-color: var(--np-accent);
+}
+
+.n-details-content ul:first-of-type li::before {
+    content: '✓';
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    background: var(--np-accent);
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: bold;
+}
+
+/* ========== SECOND LIST — Minimal Feature Cards ========== */
+.n-details-content ul:nth-of-type(2) {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--np-border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.n-details-content ul:nth-of-type(2) li {
+    position: relative;
+    padding: 20px 24px 20px 24px;
+    background: var(--np-bg);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--np-text);
+    line-height: 1.6;
+    margin: 0;
+    transition: background-color 0.2s;
+}
+
+.n-details-content ul:nth-of-type(2) li:hover {
+    background: var(--np-bg-off);
+}
+
+.n-details-content ul:nth-of-type(2) li::before {
+    content: none;
+}
+
+/* Any additional lists */
+.n-details-content ul:nth-of-type(n+3) {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px 0;
+}
+
+.n-details-content ul:nth-of-type(n+3) li {
+    padding: 8px 0 8px 24px;
+    position: relative;
+    color: var(--np-text-light);
+    margin: 0;
+}
+
+.n-details-content ul:nth-of-type(n+3) li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--np-accent);
+}
+
+/* Ordered lists */
+.n-details-content ol {
+    padding-left: 20px;
+    margin-bottom: 28px;
+}
+
+.n-details-content ol li {
+    padding: 4px 0;
+    margin: 0;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+    .n-product-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .n-product-image {
+        max-width: 320px;
+    }
+
+    .n-product-title {
+        font-size: 2rem;
+    }
+
+    .n-product-summary {
+        max-width: 100%;
+    }
+
+    .n-details-content ul:first-of-type {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .n-product-hero {
+        padding: 40px 20px;
+    }
+
+    .n-product-title {
+        font-size: 1.75rem;
+    }
+
+    .n-product-price {
+        font-size: 1.4rem;
+    }
+
+    .n-product-details-section {
+        padding: 48px 20px 64px;
+    }
+}
