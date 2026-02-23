@@ -122,6 +122,11 @@
     max-width: 480px;
 }
 
+/* ========== BUY BUTTON ========== */
+.n-product-buy-button {
+    margin-top: 28px;
+}
+
 /* ========== DETAILS SECTION ========== */
 .n-product-details-section {
     background: var(--np-bg);

@@ -83,6 +83,7 @@ function nucleus_product_meta_box_html($post)
     $subtitle = get_post_meta($post->ID, '_nucleus_product_subtitle', true);
     $price = get_post_meta($post->ID, '_nucleus_product_price', true);
     $hero_summary = get_post_meta($post->ID, '_nucleus_product_hero_summary', true);
+    $shopify_button = get_post_meta($post->ID, '_nucleus_product_shopify_button', true);
     wp_nonce_field('nucleus_product_meta_box_nonce', 'nucleus_product_nonce');
     ?>
     <p>
@@ -105,6 +106,15 @@ function nucleus_product_meta_box_html($post)
         <small>⬆ This text shows in the dark hero banner, next to the product image. Keep it concise (2-3
             sentences).</small>
     </p>
+    <hr>
+    <p>
+        <label for="nucleus_product_shopify_button"><strong>🛒 Shopify Buy Button Code:</strong></label><br>
+        <textarea id="nucleus_product_shopify_button" name="nucleus_product_shopify_button" rows="6"
+            style="width:100%; font-family:monospace; font-size:12px;"
+            placeholder="Paste your Shopify Buy Button embed code here..."><?php echo esc_textarea($shopify_button); ?></textarea>
+        <small>Paste the full Shopify Buy Button embed code. This renders an "Add to Cart" button on the product
+            page.</small>
+    </p>
     <?php
 }
 
@@ -125,6 +135,10 @@ function nucleus_save_product_meta($post_id)
     }
     if (isset($_POST['nucleus_product_hero_summary'])) {
         update_post_meta($post_id, '_nucleus_product_hero_summary', sanitize_textarea_field($_POST['nucleus_product_hero_summary']));
+    }
+    // Save Shopify button code raw (contains script tags, only admins can edit)
+    if (isset($_POST['nucleus_product_shopify_button'])) {
+        update_post_meta($post_id, '_nucleus_product_shopify_button', wp_unslash($_POST['nucleus_product_shopify_button']));
     }
 }
 add_action('save_post_nucleus_product', 'nucleus_save_product_meta');
@@ -156,7 +170,7 @@ function nucleus_single_product_shortcode($atts)
     }
 
     // Enqueue CSS when shortcode is used
-    wp_enqueue_style('nucleus-single-product', NUCLEUS_DXP_URL . 'assets/css/single-product.css', array(), '3.1');
+    wp_enqueue_style('nucleus-single-product', NUCLEUS_DXP_URL . 'assets/css/single-product.css', array(), '3.2');
 
     // Get product data
     $product = get_post($product_id);
@@ -167,6 +181,7 @@ function nucleus_single_product_shortcode($atts)
     $subtitle = get_post_meta($product_id, '_nucleus_product_subtitle', true);
     $price = get_post_meta($product_id, '_nucleus_product_price', true);
     $hero_summary = get_post_meta($product_id, '_nucleus_product_hero_summary', true);
+    $shopify_button = get_post_meta($product_id, '_nucleus_product_shopify_button', true);
     $thumbnail_url = get_the_post_thumbnail_url($product_id, 'full');
     $content = apply_filters('the_content', $product->post_content);
 

@@ -1,6 +1,6 @@
 <!--
     Single Product Template — Minimalist Design
-    Variables: $title, $subtitle, $price, $hero_summary, $thumbnail_url, $content
+    Variables: $title, $subtitle, $price, $hero_summary, $shopify_button, $thumbnail_url, $content
 -->
 
 <div class="nucleus-single-product-wrapper">
@@ -34,6 +34,12 @@
                 <?php if ($hero_summary): ?>
                     <div class="n-product-summary">
                         <?php echo nl2br(esc_html($hero_summary)); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($shopify_button): ?>
+                    <div class="n-product-buy-button">
+                        <?php echo $shopify_button; ?>
                     </div>
                 <?php endif; ?>
             </div>
