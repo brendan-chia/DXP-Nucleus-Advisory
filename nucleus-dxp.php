@@ -18,6 +18,7 @@ define('NUCLEUS_DXP_URL', plugin_dir_url(__FILE__));
 require_once NUCLEUS_DXP_PATH . 'includes/form-handler.php';
 require_once NUCLEUS_DXP_PATH . 'includes/analytics.php';
 require_once NUCLEUS_DXP_PATH . 'includes/admin-dashboard.php';
+require_once NUCLEUS_DXP_PATH . 'includes/product-manager.php';
 require_once NUCLEUS_DXP_PATH . 'includes/rest-api.php';
 
 // Database table creation on activation
@@ -73,7 +74,7 @@ add_shortcode('nucleus_testing_page', 'nucleus_testing_page_shortcode');
 function nucleus_dxp_enqueue_assets()
 {
     if (is_page('testing-lab')) {
-        wp_enqueue_style('nucleus-testing-page', NUCLEUS_DXP_URL . 'assets/css/testing-page.css', array(), '3.3');
+        wp_enqueue_style('nucleus-testing-page', NUCLEUS_DXP_URL . 'assets/css/testing-page.css', array(), '3.7');
         wp_enqueue_script('nucleus-tracking', NUCLEUS_DXP_URL . 'assets/js/tracking.js', array(), '2.1', true);
     }
 }

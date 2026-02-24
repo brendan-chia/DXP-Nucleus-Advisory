@@ -9,7 +9,7 @@
 <section class="nucleus-hero">
     <div class="hero-bg-pattern"></div>
     <div class="nucleus-container hero-layout">
-        <div class="hero-left">
+        <div class="hero-left reveal fade-left">
             <span class="hero-badge">Next-Gen Talent Intelligence</span>
             <h1>Revolutionize Your Workforce with <span class="text-gradient">Predictive AI</span></h1>
             <p class="hero-desc">Stop guessing. Start predicting. Leverage our advanced People Data Platform to
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="hero-right">
+        <div class="hero-right reveal fade-right">
             <div class="form-card">
                 <div class="form-card-header">
                     <h3>Get A Free Consultation</h3>
@@ -45,22 +45,22 @@
 <section class="nucleus-what">
     <div class="nucleus-container">
         <div class="what-grid">
-            <div class="what-item">
+            <div class="what-item reveal fade-up delay-1">
                 <div class="what-icon">🤖</div>
                 <h4>Hiring Automation</h4>
                 <p>AI-driven screening &amp; matching</p>
             </div>
-            <div class="what-item">
+            <div class="what-item reveal fade-up delay-2">
                 <div class="what-icon">🧠</div>
                 <h4>Psychometric Insights</h4>
                 <p>Deep personality &amp; skill analysis</p>
             </div>
-            <div class="what-item">
+            <div class="what-item reveal fade-up delay-3">
                 <div class="what-icon">📈</div>
                 <h4>Strategic Hiring</h4>
                 <p>Data-driven talent decisions</p>
             </div>
-            <div class="what-item">
+            <div class="what-item reveal fade-up delay-4">
                 <div class="what-icon">🎓</div>
                 <h4>AI Learning</h4>
                 <p>Targeted growth &amp; development</p>
@@ -72,7 +72,7 @@
 <!-- VALUE PROPOSITION -->
 <section class="nucleus-value">
     <div class="nucleus-container value-layout">
-        <div class="value-left">
+        <div class="value-left reveal fade-left">
             <span class="section-tag">Why Nucleus Advisory</span>
             <h2>Smarter Talent Decisions, Powered by AI</h2>
             <p>We deploy a state-of-the-art People Data Platform that unifies multiple data sources with predictive
@@ -93,18 +93,18 @@
             </div>
         </div>
         <div class="value-right">
-            <div class="value-card">
+            <div class="value-card reveal fade-right delay-1">
                 <div class="value-card-icon">🤝</div>
                 <h4>Expert Partnerships</h4>
                 <p>We partner with industry-leading AI experts to deliver unparalleled talent management solutions.</p>
             </div>
-            <div class="value-card">
+            <div class="value-card reveal fade-right delay-2">
                 <div class="value-card-icon">🔗</div>
                 <h4>Perfect Fit Matching</h4>
                 <p>Advanced AI ensures the right candidate for every role while empowering individuals to reach their
                     full potential.</p>
             </div>
-            <div class="value-card">
+            <div class="value-card reveal fade-right delay-3">
                 <div class="value-card-icon">📊</div>
                 <h4>Predictive Analytics</h4>
                 <p>Unify and analyze data sources to make confident, accurate people decisions every time.</p>
@@ -116,12 +116,12 @@
 <!-- SERVICES -->
 <section class="nucleus-services">
     <div class="nucleus-container">
-        <div class="services-top">
+        <div class="services-top reveal fade-up">
             <span class="section-tag section-tag-light">Our Expertise</span>
             <h2>Services at a Glance</h2>
             <p>Tailored AI-infused solutions for every business need.</p>
         </div>
-        <div class="services-tags">
+        <div class="services-tags reveal fade-up delay-2">
             <span class="stag">Hiring Automation</span>
             <span class="stag">Psychometric Assessments</span>
             <span class="stag">Lateral Hiring</span>
@@ -138,7 +138,7 @@
 
 <!-- CTA -->
 <section class="nucleus-cta">
-    <div class="nucleus-container cta-inner">
+    <div class="nucleus-container cta-inner reveal fade-up">
         <h2>Ready to Elevate Your Talent Strategy?</h2>
         <p>Let's discuss how AI can transform your organization.</p>
         <div class="cta-actions">
@@ -147,3 +147,27 @@
         </div>
     </div>
 </section>
+
+<!-- Scroll Reveal Script -->
+<script>
+    (function () {
+        var reveals = document.querySelectorAll('.reveal');
+        if (!reveals.length) return;
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        reveals.forEach(function (el) {
+            observer.observe(el);
+        });
+    })();
+</script>
