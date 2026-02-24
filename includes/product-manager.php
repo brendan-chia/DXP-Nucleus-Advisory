@@ -170,7 +170,7 @@ function nucleus_single_product_shortcode($atts)
     }
 
     // Enqueue CSS when shortcode is used
-    wp_enqueue_style('nucleus-single-product', NUCLEUS_DXP_URL . 'assets/css/single-product.css', array(), '3.2');
+    wp_enqueue_style('nucleus-single-product', NUCLEUS_DXP_URL . 'assets/css/single-product.css', array(), '3.4');
 
     // Get product data
     $product = get_post($product_id);
@@ -221,3 +221,34 @@ function nucleus_auto_setup_oxygen_template($post_id)
 }
 add_action('save_post', 'nucleus_auto_setup_oxygen_template', 20);
 
+/**
+ * =====================================
+ * Shortcode: [nucleus_products_landing]
+ * =====================================
+ * Renders a landing page with all products.
+ * Usage: Create a page → add this shortcode.
+ */
+function nucleus_products_landing_shortcode($atts)
+{
+    $atts = shortcode_atts(array(
+        'title' => 'Self-Discovery Assessments',
+        'subtitle' => 'Unlock your potential with our premium psychometric assessments',
+    ), $atts);
+
+    // Enqueue CSS
+    wp_enqueue_style('nucleus-products-landing', NUCLEUS_DXP_URL . 'assets/css/products-landing.css', array(), '2.2');
+
+    // Get all products
+    $products = get_posts(array(
+        'post_type' => 'nucleus_product',
+        'posts_per_page' => -1,
+        'post_status' => 'publish',
+        'orderby' => 'date',
+        'order' => 'ASC',
+    ));
+
+    ob_start();
+    include NUCLEUS_DXP_PATH . 'templates/products-landing.php';
+    return ob_get_clean();
+}
+add_shortcode('nucleus_products_landing', 'nucleus_products_landing_shortcode');

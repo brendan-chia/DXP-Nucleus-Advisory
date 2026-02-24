@@ -1,0 +1,552 @@
+/*
+ * ==========================================
+ *  Products Landing — Spotlight Carousel
+ * ==========================================
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --nl-dark: #111827;
+    --nl-text: #374151;
+    --nl-text-light: #6b7280;
+    --nl-accent: #2563eb;
+    --nl-border: #e5e7eb;
+    --nl-bg: #ffffff;
+    --nl-bg-off: #f9fafb;
+    --nl-font: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ========== WRAPPER ========== */
+.nl-landing-wrapper {
+    font-family: var(--nl-font);
+    color: var(--nl-text);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ========== HERO ========== */
+.nl-hero {
+    background: var(--nl-dark);
+    padding: 140px 32px 80px;
+    text-align: center;
+}
+
+.nl-hero-inner {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.nl-hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.5);
+    padding: 6px 18px;
+    border-radius: 99px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 28px;
+}
+
+.nl-hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 0 16px 0;
+}
+
+.nl-hero-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    margin: 0 0 36px 0;
+    font-weight: 400;
+}
+
+.nl-hero-divider {
+    width: 48px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 0 auto;
+}
+
+/* ========== SPOTLIGHT SECTION ========== */
+.nl-spotlight-section {
+    background: var(--nl-bg);
+    padding: 80px 32px 60px;
+}
+
+.nl-spotlight-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ========== CAROUSEL ========== */
+.nl-carousel {
+    position: relative;
+    min-height: 480px;
+}
+
+/* ========== SLIDE ========== */
+.nl-slide {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 56px;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.nl-slide-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    position: relative;
+}
+
+/* ========== SLIDE IMAGE ========== */
+.nl-slide-image-col {
+    display: flex;
+    justify-content: center;
+}
+
+.nl-slide-image {
+    width: 100%;
+    max-width: 380px;
+    max-height: 440px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 12px;
+    display: block;
+}
+
+.nl-slide-image-placeholder {
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 4/5;
+    background: var(--nl-bg-off);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+/* ========== SLIDE INFO ========== */
+.nl-slide-info-col {
+    padding: 20px 0;
+}
+
+.nl-slide-counter {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--nl-text-light);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-variant-numeric: tabular-nums;
+}
+
+.nl-slide-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--nl-dark);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px 0;
+}
+
+.nl-slide-subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--nl-text-light);
+    margin: 0 0 24px 0;
+}
+
+.nl-slide-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--nl-text-light);
+    margin: 0 0 32px 0;
+    max-width: 440px;
+}
+
+/* Slide Footer */
+.nl-slide-footer {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nl-slide-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--nl-dark);
+}
+
+.nl-slide-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--nl-dark);
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.nl-slide-btn:hover {
+    background: #1f2937;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* ========== CONTROLS ========== */
+.nl-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 24px;
+}
+
+/* Dots */
+.nl-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.nl-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: var(--nl-border);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.nl-dot-active {
+    background: var(--nl-dark);
+    transform: scale(1.2);
+}
+
+.nl-dot:hover {
+    background: var(--nl-text-light);
+}
+
+/* Arrows */
+.nl-arrows {
+    display: flex;
+    gap: 8px;
+}
+
+.nl-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--nl-border);
+    background: var(--nl-bg);
+    color: var(--nl-dark);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.nl-arrow:hover {
+    background: var(--nl-dark);
+    color: #ffffff;
+    border-color: var(--nl-dark);
+}
+
+/* ========== PROGRESS BAR ========== */
+.nl-progress-track {
+    display: none;
+}
+
+.nl-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--nl-dark);
+    border-radius: 2px;
+}
+
+/* ========== HOW IT WORKS ========== */
+.nl-how-section {
+    background: var(--nl-bg-off);
+    padding: 80px 32px;
+    border-top: 1px solid var(--nl-border);
+}
+
+.nl-how-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.nl-section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--nl-dark);
+    margin: 0 0 6px 0;
+    text-align: center;
+}
+
+.nl-section-subtitle {
+    font-size: 0.95rem;
+    color: var(--nl-text-light);
+    text-align: center;
+    margin: 0 0 48px 0;
+}
+
+.nl-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.nl-step {
+    text-align: center;
+    padding: 32px 24px;
+    background: var(--nl-bg);
+    border: 1px solid var(--nl-border);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.nl-step:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.nl-step-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--nl-dark);
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    opacity: 0.15;
+}
+
+.nl-step-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--nl-dark);
+    margin: 0 0 10px 0;
+}
+
+.nl-step-desc {
+    font-size: 0.88rem;
+    color: var(--nl-text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ========== INCLUDES SECTION ========== */
+.nl-includes-section {
+    background: var(--nl-bg);
+    padding: 80px 32px;
+    border-top: 1px solid var(--nl-border);
+}
+
+.nl-includes-inner {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.nl-includes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.nl-include-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px;
+    background: var(--nl-bg-off);
+    border: 1px solid var(--nl-border);
+    border-radius: 10px;
+    transition: border-color 0.2s;
+}
+
+.nl-include-item:hover {
+    border-color: var(--nl-dark);
+}
+
+.nl-include-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.nl-include-text {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--nl-dark);
+}
+
+/* ========== CTA SECTION ========== */
+.nl-cta-section {
+    background: var(--nl-dark);
+    padding: 72px 32px;
+    text-align: center;
+}
+
+.nl-cta-inner {
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+.nl-cta-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+}
+
+.nl-cta-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ========== DISCLAIMERS ========== */
+.nl-disclaimers-section {
+    background: var(--nl-bg-off);
+    padding: 64px 32px;
+    border-top: 1px solid var(--nl-border);
+}
+
+.nl-disclaimers-inner {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.nl-disclaimers-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--nl-dark);
+    margin: 0 0 32px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--nl-dark);
+    display: inline-block;
+}
+
+.nl-disclaimer {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--nl-border);
+}
+
+.nl-disclaimer:last-child {
+    border-bottom: none;
+}
+
+.nl-disclaimer h4 {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--nl-dark);
+    margin: 0 0 8px 0;
+}
+
+.nl-disclaimer p {
+    font-size: 0.85rem;
+    color: var(--nl-text-light);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+    .nl-slide {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+    }
+
+    .nl-slide-image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .nl-slide-desc {
+        max-width: 100%;
+    }
+
+    .nl-slide-footer {
+        justify-content: center;
+    }
+
+    .nl-hero-title {
+        font-size: 2.25rem;
+    }
+
+    .nl-slide-title {
+        font-size: 1.6rem;
+    }
+
+    .nl-carousel {
+        min-height: auto;
+    }
+
+    .nl-steps {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .nl-includes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .nl-hero {
+        padding: 100px 20px 56px;
+    }
+
+    .nl-hero-title {
+        font-size: 1.85rem;
+    }
+
+    .nl-spotlight-section {
+        padding: 48px 20px 40px;
+    }
+
+    .nl-slide-footer {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nl-carousel-controls {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .nl-how-section,
+    .nl-includes-section {
+        padding: 48px 20px;
+    }
+
+    .nl-includes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nl-disclaimers-section {
+        padding: 40px 20px;
+    }
+}

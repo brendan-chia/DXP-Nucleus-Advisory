@@ -220,37 +220,58 @@
     font-weight: bold;
 }
 
-/* ========== SECOND LIST — Minimal Feature Cards ========== */
+/* ========== SECOND LIST — Minimalist Benefits ========== */
 .n-details-content ul:nth-of-type(2) {
     list-style: none;
     padding: 0;
     margin: 0 0 40px 0;
     display: flex;
     flex-direction: column;
-    gap: 1px;
-    background: var(--np-border);
-    border-radius: 10px;
-    overflow: hidden;
+    gap: 0;
 }
 
 .n-details-content ul:nth-of-type(2) li {
     position: relative;
-    padding: 20px 24px 20px 24px;
-    background: var(--np-bg);
-    font-weight: 500;
+    padding: 24px 0;
+    background: transparent;
+    font-weight: 400;
     font-size: 0.95rem;
-    color: var(--np-text);
-    line-height: 1.6;
+    color: var(--np-text-light);
+    line-height: 1.7;
     margin: 0;
-    transition: background-color 0.2s;
+    border-bottom: 1px solid var(--np-border);
+    transition: padding-left 0.3s ease;
+}
+
+.n-details-content ul:nth-of-type(2) li:first-child {
+    border-top: 1px solid var(--np-border);
 }
 
 .n-details-content ul:nth-of-type(2) li:hover {
-    background: var(--np-bg-off);
+    padding-left: 16px;
 }
 
 .n-details-content ul:nth-of-type(2) li::before {
-    content: none;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    background: var(--np-dark);
+    transition: width 0.4s ease;
+}
+
+.n-details-content ul:nth-of-type(2) li:hover::before {
+    width: 100%;
+}
+
+.n-details-content ul:nth-of-type(2) li strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--np-dark);
+    margin-bottom: 4px;
 }
 
 /* Any additional lists */
