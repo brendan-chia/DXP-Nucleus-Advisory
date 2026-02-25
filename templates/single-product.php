@@ -7,6 +7,14 @@
 
     <!-- Hero Section -->
     <div class="n-product-hero">
+        <div class="np-hero-particles">
+            <span class="np-particle np-p1"></span>
+            <span class="np-particle np-p2"></span>
+            <span class="np-particle np-p3"></span>
+            <span class="np-particle np-p4"></span>
+            <span class="np-particle np-p5"></span>
+            <span class="np-particle np-p6"></span>
+        </div>
         <div class="n-product-hero-inner">
 
             <!-- Left: Product Image -->
@@ -99,7 +107,7 @@
             const detailsContainer = document.querySelector('.n-details-content');
             if (detailsContainer) {
                 const targetH3s = detailsContainer.querySelectorAll('h3');
-                
+
                 // Only wrap if we have at least 3 sections
                 if (targetH3s.length >= 3) {
                     const h3_2 = targetH3s[1];
@@ -107,7 +115,7 @@
 
                     const splitWrapper = document.createElement('div');
                     splitWrapper.className = 'n-details-split-layout';
-                    
+
                     const colLeft = document.createElement('div');
                     colLeft.className = 'n-details-col n-details-col-left';
 
@@ -121,7 +129,7 @@
 
                     // Move everything from 2nd H3 to 3rd H3 into the left column
                     let curr = h3_2;
-                    while(curr && curr !== h3_3) {
+                    while (curr && curr !== h3_3) {
                         let next = curr.nextSibling;
                         colLeft.appendChild(curr);
                         curr = next;
@@ -129,7 +137,7 @@
 
                     // Move everything from 3rd H3 onwards into the right column
                     curr = h3_3;
-                    while(curr) {
+                    while (curr) {
                         let next = curr.nextSibling;
                         colRight.appendChild(curr);
                         curr = next;
@@ -142,7 +150,7 @@
 
                 const colRightUl = detailsContainer.querySelector('.n-details-col-right ul');
                 if (colRightUl) colRightUl.classList.add('n-list-impact');
-                
+
                 // The first UL that isn't inside our new split columns gets the "receive" class
                 const firstUl = detailsContainer.querySelector('ul:not(.n-list-framework):not(.n-list-impact)');
                 if (firstUl) firstUl.classList.add('n-list-receive');

@@ -170,7 +170,7 @@ function nucleus_single_product_shortcode($atts)
     }
 
     // Enqueue CSS when shortcode is used
-    wp_enqueue_style('nucleus-single-product', NUCLEUS_DXP_URL . 'assets/css/single-product.css', array(), '5.2');
+    wp_enqueue_style('nucleus-single-product', NUCLEUS_DXP_URL . 'assets/css/single-product.css', array(), '5.4');
 
     // Get product data
     $product = get_post($product_id);
@@ -236,7 +236,7 @@ function nucleus_products_landing_shortcode($atts)
     ), $atts);
 
     // Enqueue CSS
-    wp_enqueue_style('nucleus-products-landing', NUCLEUS_DXP_URL . 'assets/css/products-landing.css', array(), '2.2');
+    wp_enqueue_style('nucleus-products-landing', NUCLEUS_DXP_URL . 'assets/css/products-landing.css', array(), '3.2');
 
     // Get all products
     $products = get_posts(array(

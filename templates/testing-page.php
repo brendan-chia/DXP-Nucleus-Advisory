@@ -8,24 +8,29 @@
 <!-- HERO SECTION -->
 <section class="nucleus-hero">
     <div class="hero-bg-pattern"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
     <div class="nucleus-container hero-layout">
         <div class="hero-left reveal fade-left">
-            <span class="hero-badge">Next-Gen Talent Intelligence</span>
-            <h1>Revolutionize Your Workforce with <span class="text-gradient">Predictive AI</span></h1>
-            <p class="hero-desc">Stop guessing. Start predicting. Leverage our advanced People Data Platform to
-                identify, assess, and retain top performers with unmatched accuracy.</p>
+            <span class="hero-badge">
+                <span class="badge-dot"></span>
+                AI-Driven Consulting Solutions
+            </span>
+            <h1>Transform Your Organization with <span class="text-gradient">AI-Powered</span> Talent Intelligence</h1>
+            <p class="hero-desc">Your trusted partner in organization and human capability consulting. Dynamic solutions with a relentless focus on enhancing your people and organization.</p>
             <div class="hero-trust">
                 <div class="trust-item">
                     <span class="trust-icon">🏆</span>
-                    <span>Malaysia's Leading AI-HR</span>
+                    <span>Pioneers in Malaysia</span>
                 </div>
                 <div class="trust-item">
                     <span class="trust-icon">⚡</span>
-                    <span>Data-Driven Precision</span>
+                    <span>AI Innovation</span>
                 </div>
                 <div class="trust-item">
                     <span class="trust-icon">🚀</span>
-                    <span>Full-Spectrum Solutions</span>
+                    <span>All Business Sizes</span>
                 </div>
             </div>
         </div>
@@ -41,79 +46,80 @@
     </div>
 </section>
 
-<!-- WHAT WE DO — Icon Strip -->
-<section class="nucleus-what">
+<!-- PARTNERS & EXPERTISE (dark, horizontal layout) -->
+<section class="nucleus-partners">
     <div class="nucleus-container">
-        <div class="what-grid">
-            <div class="what-item reveal fade-up delay-1">
-                <div class="what-icon">🤖</div>
-                <h4>Hiring Automation</h4>
-                <p>AI-driven screening &amp; matching</p>
+        <div class="partners-header reveal fade-up">
+            <span class="section-tag section-tag-light">Our Partners & Expertise</span>
+            <h2>Industry-Leading AI Partnerships</h2>
+        </div>
+        <div class="partners-grid">
+            <div class="partner-card reveal fade-up delay-1">
+                <div class="partner-icon">🧬</div>
+                <div class="partner-content">
+                    <h4>Deep Talent Analytics</h4>
+                    <p>Advanced AI that delves into personality traits, potentials & skills</p>
+                </div>
             </div>
-            <div class="what-item reveal fade-up delay-2">
-                <div class="what-icon">🧠</div>
-                <h4>Psychometric Insights</h4>
-                <p>Deep personality &amp; skill analysis</p>
+            <div class="partner-card reveal fade-up delay-2">
+                <div class="partner-icon">📊</div>
+                <div class="partner-content">
+                    <h4>Predictive People Decisions</h4>
+                    <p>Unifying multiple data sources with predictive analytics for confident decisions</p>
+                </div>
             </div>
-            <div class="what-item reveal fade-up delay-3">
-                <div class="what-icon">📈</div>
-                <h4>Strategic Hiring</h4>
-                <p>Data-driven talent decisions</p>
-            </div>
-            <div class="what-item reveal fade-up delay-4">
-                <div class="what-icon">🎓</div>
-                <h4>AI Learning</h4>
-                <p>Targeted growth &amp; development</p>
+            <div class="partner-card reveal fade-up delay-3">
+                <div class="partner-icon">🔗</div>
+                <div class="partner-content">
+                    <h4>Perfect Fit Matching</h4>
+                    <p>Connecting organizations with ideal candidates while empowering individual potential</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- VALUE PROPOSITION -->
-<section class="nucleus-value">
-    <div class="nucleus-container value-layout">
-        <div class="value-left reveal fade-left">
-            <span class="section-tag">Why Nucleus Advisory</span>
-            <h2>Smarter Talent Decisions, Powered by AI</h2>
-            <p>We deploy a state-of-the-art People Data Platform that unifies multiple data sources with predictive
-                analytics — enabling more accurate and confident people decisions.</p>
-            <div class="value-stats">
-                <div class="stat-block">
-                    <div class="stat-num">100+</div>
-                    <div class="stat-text">Organizations Served</div>
-                </div>
-                <div class="stat-block">
-                    <div class="stat-num">10+</div>
-                    <div class="stat-text">Service Categories</div>
-                </div>
-                <div class="stat-block">
-                    <div class="stat-num">24/7</div>
-                    <div class="stat-text">Platform Access</div>
-                </div>
-            </div>
+<!-- EMPOWERING TRANSFORMATION — Features (light, numbered cards) -->
+<section class="nucleus-features">
+    <div class="nucleus-container">
+        <div class="features-header reveal fade-up">
+            <span class="section-tag">What We Deliver</span>
+            <h2>Empowering Transformation with <span class="text-gradient">AI-Enhanced Talent</span></h2>
         </div>
-        <div class="value-right">
-            <div class="value-card reveal fade-right delay-1">
-                <div class="value-card-icon">🤝</div>
-                <h4>Expert Partnerships</h4>
-                <p>We partner with industry-leading AI experts to deliver unparalleled talent management solutions.</p>
+        <div class="features-grid">
+            <div class="feature-card reveal fade-up delay-1">
+                <div class="feature-number">01</div>
+                <div class="feature-icon">🤖</div>
+                <h4>Integrated Solution</h4>
+                <p>Intelligent hiring, graduate recruitment, career path & talent cultivation — all AI-driven.</p>
+                <div class="feature-line"></div>
             </div>
-            <div class="value-card reveal fade-right delay-2">
-                <div class="value-card-icon">🔗</div>
-                <h4>Perfect Fit Matching</h4>
-                <p>Advanced AI ensures the right candidate for every role while empowering individuals to reach their
-                    full potential.</p>
+            <div class="feature-card reveal fade-up delay-2">
+                <div class="feature-number">02</div>
+                <div class="feature-icon">🧠</div>
+                <h4>Top AI Framework</h4>
+                <p>All-encompassing AI-powered hiring automation for thorough evaluation & top results.</p>
+                <div class="feature-line"></div>
             </div>
-            <div class="value-card reveal fade-right delay-3">
-                <div class="value-card-icon">📊</div>
-                <h4>Predictive Analytics</h4>
-                <p>Unify and analyze data sources to make confident, accurate people decisions every time.</p>
+            <div class="feature-card reveal fade-up delay-3">
+                <div class="feature-number">03</div>
+                <div class="feature-icon">📈</div>
+                <h4>Strategic Hiring & Succession</h4>
+                <p>Data-driven lateral hiring, internal promotion & succession planning with AI insights.</p>
+                <div class="feature-line"></div>
+            </div>
+            <div class="feature-card reveal fade-up delay-4">
+                <div class="feature-number">04</div>
+                <div class="feature-icon">🎓</div>
+                <h4>AI-Powered Learning</h4>
+                <p>Targeted learning plans, culture-fit assessments & continuous growth frameworks.</p>
+                <div class="feature-line"></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES AT A GLANCE -->
 <section class="nucleus-services">
     <div class="nucleus-container">
         <div class="services-top reveal fade-up">
@@ -128,7 +134,7 @@
             <span class="stag">AI Learning</span>
             <span class="stag">Strategy &amp; Transformation</span>
             <span class="stag">People &amp; Organization</span>
-            <span class="stag">Mergers &amp; Acquisitions</span>
+            <span class="stag">Mergers, Acquisitions &amp; Divestitures</span>
             <span class="stag">Operations &amp; Supply Chain</span>
             <span class="stag">Sales, Marketing &amp; CX</span>
             <span class="stag">Technology &amp; Innovation</span>
@@ -136,11 +142,59 @@
     </div>
 </section>
 
+<!-- THE POWER OF AI — Banner -->
+<section class="nucleus-ai-banner">
+    <div class="ai-banner-bg"></div>
+    <div class="ai-particles">
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
+        <span class="particle p5"></span>
+        <span class="particle p6"></span>
+    </div>
+    <div class="nucleus-container ai-banner-inner reveal fade-up">
+        <div class="ai-badge">⚡ The Power of AI</div>
+        <h2>Harnessing <span class="text-gradient-light">Artificial Intelligence</span> to Revolutionize Talent</h2>
+        <p>Pioneers in Malaysia — delivering exceptional results for businesses of all sizes.</p>
+        <div class="ai-tagline">
+            We deploy state-of-the-art People Data Platform to optimize your talent processes and propel your organization towards unprecedented growth, fuelled by the best talent.
+        </div>
+    </div>
+</section>
+
+<!-- EXPERTISE GLIMPSE -->
+<section class="nucleus-glimpse">
+    <div class="nucleus-container">
+        <div class="glimpse-layout">
+            <div class="glimpse-left reveal fade-left">
+                <span class="section-tag">Discover More</span>
+                <h2>Get A Glimpse Of <span class="text-gradient">Nucleus Advisory</span> Expertise</h2>
+                <p>Experience how we integrate advanced AI-driven solutions, optimize efficiency, attract top talent, and foster sustained professional growth.</p>
+                <a href="#" class="btn-secondary">Explore Our Approach →</a>
+            </div>
+            <div class="glimpse-right reveal fade-right">
+                <div class="glimpse-visual">
+                    <div class="glimpse-ring ring-1"></div>
+                    <div class="glimpse-ring ring-2"></div>
+                    <div class="glimpse-ring ring-3"></div>
+                    <div class="glimpse-center-icon">🌐</div>
+                    <div class="orbit-dot orbit-1">🤖</div>
+                    <div class="orbit-dot orbit-2">📊</div>
+                    <div class="orbit-dot orbit-3">🎯</div>
+                    <div class="orbit-dot orbit-4">💡</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- CTA -->
 <section class="nucleus-cta">
     <div class="nucleus-container cta-inner reveal fade-up">
-        <h2>Ready to Elevate Your Talent Strategy?</h2>
-        <p>Let's discuss how AI can transform your organization.</p>
+        <div class="cta-glow"></div>
+        <h2>Let Us Elevate Your Business <span class="text-gradient">To New Heights!</span></h2>
+        <p>Ready to revolutionize your talent strategy with AI-fueled solutions?</p>
         <div class="cta-actions">
             <a href="#" class="btn-primary">Contact Us</a>
             <a href="#" class="btn-outline download-brochure-btn">Download Brochure →</a>
@@ -169,5 +223,18 @@
         reveals.forEach(function (el) {
             observer.observe(el);
         });
+
+        /* Parallax on hero orbs */
+        var orbs = document.querySelectorAll('.hero-orb');
+        if (orbs.length) {
+            window.addEventListener('mousemove', function (e) {
+                var x = (e.clientX / window.innerWidth - 0.5) * 2;
+                var y = (e.clientY / window.innerHeight - 0.5) * 2;
+                orbs.forEach(function (orb, i) {
+                    var speed = (i + 1) * 12;
+                    orb.style.transform = 'translate(' + (x * speed) + 'px, ' + (y * speed) + 'px)';
+                });
+            });
+        }
     })();
 </script>
