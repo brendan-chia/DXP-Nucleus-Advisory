@@ -70,12 +70,19 @@ function nucleus_testing_page_shortcode()
 }
 add_shortcode('nucleus_testing_page', 'nucleus_testing_page_shortcode');
 
-// Enqueue page CSS and tracking JS on testing page
+// Enqueue page CSS and tracking JS on testing page AND single product pages
 function nucleus_dxp_enqueue_assets()
 {
-    if (is_page('testing-lab')) {
+    $is_testing_lab    = is_page('testing-lab');
+    $is_product_page   = is_singular('nucleus_product');       // single product CPT pages
+    $is_products_page  = nucleus_is_products_landing(); // detects [nucleus_products_landing] shortcode
+
+    if ($is_testing_lab) {
         wp_enqueue_style('nucleus-testing-page', NUCLEUS_DXP_URL . 'assets/css/testing-page.css', array(), '3.7');
-        wp_enqueue_script('nucleus-tracking', NUCLEUS_DXP_URL . 'assets/js/tracking.js', array(), '2.1', true);
+    }
+
+    if ($is_testing_lab || $is_product_page || $is_products_page) {
+        wp_enqueue_script('nucleus-tracking', NUCLEUS_DXP_URL . 'assets/js/tracking.js', array(), '2.3', true);
     }
 }
 add_action('wp_enqueue_scripts', 'nucleus_dxp_enqueue_assets');

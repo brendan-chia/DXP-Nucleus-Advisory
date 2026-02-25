@@ -50,7 +50,10 @@
                             <?php if ($p_price): ?>
                                 <span class="nl-slide-price"><?php echo esc_html($p_price); ?></span>
                             <?php endif; ?>
-                            <a href="<?php echo esc_url($p_link); ?>" class="nl-slide-btn">View Assessment →</a>
+                            <a href="<?php echo esc_url($p_link); ?>"
+                               class="nl-slide-btn"
+                               data-product="<?php echo esc_attr($p_title); ?>"
+                               data-position="<?php echo $index + 1; ?>">View Assessment →</a>
                         </div>
                     </div>
                 </div>

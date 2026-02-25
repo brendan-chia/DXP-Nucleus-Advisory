@@ -1,20 +1,35 @@
 <?php
 /**
  * Analytics: GTM + GA4 Script Injection
- * Only loads on the 'testing-lab' page
+ * Loads on the 'testing-lab' page AND single product pages (nucleus_product CPT)
+ * Debug mode: ON — events visible in GA4 DebugView in real time.
+ *             Set NUCLEUS_GA4_DEBUG to false to disable before going to production.
  */
 
 if (!defined('ABSPATH'))
     exit;
 
 // GA4 Measurement ID (change this if you switch GA4 properties)
-define('NUCLEUS_GA4_ID', 'G-V6CKR789PG');
-define('NUCLEUS_GTM_ID', 'GTM-NKL3T3HW');
+define('NUCLEUS_GA4_ID',    'G-V6CKR789PG');
+define('NUCLEUS_GTM_ID',    'GTM-NKL3T3HW');
+define('NUCLEUS_GA4_DEBUG', true);  // ← set to false before going to production
+
+// Helper: detects if the current page uses the products landing shortcode
+// This is more reliable than is_page('assessments') which depends on the slug.
+function nucleus_is_products_landing() {
+    global $post;
+    return $post && has_shortcode($post->post_content, 'nucleus_products_landing');
+}
+
+// Helper: returns true on pages where analytics should load
+function nucleus_should_load_analytics() {
+    return is_page('testing-lab') || is_singular('nucleus_product') || nucleus_is_products_landing();
+}
 
 // Inject GTM + GA4 into <head>
 function nucleus_core_add_gtm_head()
 {
-    if (is_page('testing-lab')) {
+    if (nucleus_should_load_analytics()) {
         ?>
         <!-- Google Tag Manager -->
         <script>(function (w, d, s, l, i) {
@@ -33,7 +48,10 @@ function nucleus_core_add_gtm_head()
             window.dataLayer = window.dataLayer || [];
             function gtag() { dataLayer.push(arguments); }
             gtag('js', new Date());
-            gtag('config', '<?php echo NUCLEUS_GA4_ID; ?>', { send_page_view: false });
+            gtag('config', '<?php echo NUCLEUS_GA4_ID; ?>', {
+                send_page_view: false,
+                debug_mode:     <?php echo NUCLEUS_GA4_DEBUG ? 'true' : 'false'; ?>
+            });
         </script>
         <?php
     }
@@ -43,7 +61,7 @@ add_action('wp_head', 'nucleus_core_add_gtm_head');
 // Inject GTM noscript into <body>
 function nucleus_core_add_gtm_body()
 {
-    if (is_page('testing-lab')) {
+    if (nucleus_should_load_analytics()) {
         ?>
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo NUCLEUS_GTM_ID; ?>" height="0" width="0"
