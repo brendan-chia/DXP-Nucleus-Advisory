@@ -38,7 +38,19 @@
                 <?php endif; ?>
 
                 <?php if ($shopify_button): ?>
-                    <div class="n-product-buy-button">
+                    <div class="n-product-terms">
+                        <label class="n-terms-checkbox">
+                            <input type="checkbox" id="nucleus-terms-checkbox">
+                            <span>I agree to the
+                              <a href="/wp-content/uploads/2026/02/Nucleus_Advisory_Privacy_Policy.pdf" target="_blank">Privacy Policy</a>,
+                              <a href="/wp-content/uploads/2026/02/Nucleus_Advisory_Delivery_Policy.pdf" target="_blank">Delivery Policy</a>
+                              and
+                              <a href="/wp-content/uploads/2026/02/Nucleus_Advisory_Refund_Policy.pdf" target="_blank">Refund Policy</a>.
+                            </span>
+                      </label>
+
+                    </div>
+                    <div class="n-product-buy-button" id="nucleus-buy-button-wrapper">
                         <?php echo $shopify_button; ?>
                     </div>
                 <?php endif; ?>
@@ -58,5 +70,26 @@
             </div>
         </div>
     <?php endif; ?>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const checkbox = document.getElementById("nucleus-terms-checkbox");
+      const buttonWrapper = document.getElementById("nucleus-buy-button-wrapper");
+
+      if (!checkbox || !buttonWrapper) return;
+      // disable button initially
+      buttonWrapper.style.opacity = "0.5";
+      buttonWrapper.style.pointerEvents = "none";
+      checkbox.addEventListener("change", function () {
+          if (this.checked) {
+              buttonWrapper.style.opacity = "1";
+              buttonWrapper.style.pointerEvents = "auto";
+          } else {
+              buttonWrapper.style.opacity = "0.5";
+              buttonWrapper.style.pointerEvents = "none";
+          }
+      });
+  });
+  </script>
 
 </div>

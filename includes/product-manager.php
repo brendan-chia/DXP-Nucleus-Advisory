@@ -170,7 +170,7 @@ function nucleus_single_product_shortcode($atts)
     }
 
     // Enqueue CSS when shortcode is used
-    wp_enqueue_style('nucleus-single-product', NUCLEUS_DXP_URL . 'assets/css/single-product.css', array(), '3.4');
+    wp_enqueue_style('nucleus-single-product', NUCLEUS_DXP_URL . 'assets/css/single-product.css', array(), '3.5');
 
     // Get product data
     $product = get_post($product_id);
