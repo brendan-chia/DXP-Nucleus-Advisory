@@ -160,47 +160,52 @@
     margin-top: 28px;
 }
 
-/* ========== DETAILS SECTION ========== */
+/* =================================================== */
+/*                 DETAILS SECTION                      */
+/* =================================================== */
 .n-product-details-section {
     background: var(--np-bg);
-    padding: 72px 32px 96px;
+    padding: 80px 32px 96px;
 }
 
 .n-product-details-inner {
-    max-width: 760px;
+    max-width: 1060px;
+    /* Widened to support split layout */
     margin: 0 auto;
 }
 
 .n-details-title {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 800;
     color: var(--np-dark);
-    margin: 0 0 40px 0;
-    padding-bottom: 16px;
-    border-bottom: 2px solid var(--np-dark);
-    display: inline-block;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.02em;
 }
 
-/* ========== CONTENT ========== */
+.n-details-title::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--np-accent), #7c3aed);
+    margin-top: 16px;
+    border-radius: 2px;
+}
+
+/* ========== CONTENT WRAPPER ========== */
 .n-details-content {
     font-size: 1rem;
     line-height: 1.8;
     color: var(--np-text);
+    margin-top: 48px;
+    counter-reset: framework-counter;
 }
 
 .n-details-content p {
-    margin-bottom: 24px;
-    color: var(--np-text-light);
-}
-
-.n-details-content h2,
-.n-details-content h3,
-.n-details-content h4 {
-    color: var(--np-dark);
-    font-weight: 700;
-    margin-top: 40px;
     margin-bottom: 20px;
-    font-size: 1.15rem;
+    color: var(--np-text-light);
+    font-size: 0.95rem;
+    max-width: 800px;
 }
 
 .n-details-content strong {
@@ -208,120 +213,299 @@
     font-weight: 600;
 }
 
-/* ========== FIRST LIST — Clean Grid ========== */
-.n-details-content ul:first-of-type {
-    list-style: none;
+/* ========== HEADINGS ========== */
+.n-details-content h3 {
+    font-weight: 700;
+    margin-top: 56px;
+    margin-bottom: 28px;
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
+    color: var(--np-dark);
+    position: relative;
     padding: 0;
-    margin: 0 0 48px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
 }
 
-.n-details-content ul:first-of-type li {
+.n-details-content h3:first-of-type {
+    margin-top: 0;
+}
+
+/* ======================================================= */
+/*  SECTION 1: What You Will Receive — Check Grid Cards    */
+/* ======================================================= */
+ul.n-list-receive {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 14px;
+}
+
+ul.n-list-receive li {
     position: relative;
-    padding: 16px 16px 16px 44px;
-    background: var(--np-bg-off);
+    padding: 18px 18px 18px 52px;
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.8), rgba(241, 245, 249, 0.6));
     border: 1px solid var(--np-border);
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: 500;
     font-size: 0.92rem;
     color: var(--np-text);
     margin: 0;
-    transition: border-color 0.2s;
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.n-details-content ul:first-of-type li:hover {
+ul.n-list-receive li:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+ul.n-list-receive li:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+ul.n-list-receive li:nth-child(3) {
+    transition-delay: 0.15s;
+}
+
+ul.n-list-receive li:nth-child(4) {
+    transition-delay: 0.2s;
+}
+
+ul.n-list-receive li:nth-child(5) {
+    transition-delay: 0.25s;
+}
+
+ul.n-list-receive li:nth-child(6) {
+    transition-delay: 0.3s;
+}
+
+ul.n-list-receive li:nth-child(7) {
+    transition-delay: 0.35s;
+}
+
+ul.n-list-receive li:nth-child(8) {
+    transition-delay: 0.4s;
+}
+
+ul.n-list-receive.is-visible li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+ul.n-list-receive.is-visible li:hover {
     border-color: var(--np-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
 }
 
-.n-details-content ul:first-of-type li::before {
+ul.n-list-receive li::before {
     content: '✓';
     position: absolute;
-    left: 14px;
+    left: 16px;
     top: 50%;
     transform: translateY(-50%);
-    width: 22px;
-    height: 22px;
-    background: var(--np-accent);
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, var(--np-accent), #7c3aed);
     color: white;
-    border-radius: 6px;
+    border-radius: 7px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: bold;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
 }
 
-/* ========== SECOND LIST — Minimalist Benefits ========== */
-.n-details-content ul:nth-of-type(2) {
+/* ======================================================= */
+/*  SPLIT GRID LAYOUT CONTAINER (Added via JS)             */
+/* ======================================================= */
+.n-details-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid var(--np-border);
+    align-items: start;
+}
+
+.n-details-col h3 {
+    margin-top: 0;
+    /* Reset margin since it's top of column now */
+}
+
+
+/* ======================================================= */
+/*  SECTION 2: The Framework — Clean Numbered Cards        */
+/* ======================================================= */
+ul.n-list-framework {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    counter-reset: framework-counter;
+}
+
+ul.n-list-framework li {
+    position: relative;
+    padding: 24px 24px 24px 64px;
+    background: var(--np-bg);
+    border: 1px solid var(--np-border);
+    border-radius: 12px;
+    font-weight: 400;
+    font-size: 0.92rem;
+    color: var(--np-text-light);
+    line-height: 1.7;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+ul.n-list-framework li:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+ul.n-list-framework li:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+ul.n-list-framework li:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+ul.n-list-framework li:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+ul.n-list-framework.is-visible li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+ul.n-list-framework.is-visible li:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+ul.n-list-framework li::before {
+    content: counter(framework-counter, decimal-leading-zero);
+    counter-increment: framework-counter;
+    position: absolute;
+    left: 20px;
+    top: 24px;
+    width: 28px;
+    height: 28px;
+    background: var(--np-accent-soft);
+    color: var(--np-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+ul.n-list-framework li strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--np-dark);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+/* ======================================================= */
+/*  SECTION 3: The Impact — Clean Accent Border Cards      */
+/* ======================================================= */
+ul.n-list-impact {
     list-style: none;
     padding: 0;
     margin: 0 0 40px 0;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 16px;
 }
 
-.n-details-content ul:nth-of-type(2) li {
+ul.n-list-impact li {
     position: relative;
-    padding: 24px 0;
-    background: transparent;
+    padding: 24px;
+    background: var(--np-bg);
+    border: 1px solid var(--np-border);
+    border-left: 3px solid var(--np-accent);
+    border-radius: 0 12px 12px 0;
     font-weight: 400;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: var(--np-text-light);
     line-height: 1.7;
     margin: 0;
-    border-bottom: 1px solid var(--np-border);
-    transition: padding-left 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-left-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.n-details-content ul:nth-of-type(2) li:first-child {
-    border-top: 1px solid var(--np-border);
+ul.n-list-impact li:nth-child(1) {
+    transition-delay: 0.1s;
 }
 
-.n-details-content ul:nth-of-type(2) li:hover {
-    padding-left: 16px;
+ul.n-list-impact li:nth-child(2) {
+    transition-delay: 0.2s;
 }
 
-.n-details-content ul:nth-of-type(2) li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    width: 0;
-    height: 1px;
-    background: var(--np-dark);
-    transition: width 0.4s ease;
+ul.n-list-impact li:nth-child(3) {
+    transition-delay: 0.3s;
 }
 
-.n-details-content ul:nth-of-type(2) li:hover::before {
-    width: 100%;
+ul.n-list-impact li:nth-child(4) {
+    transition-delay: 0.4s;
 }
 
-.n-details-content ul:nth-of-type(2) li strong {
+ul.n-list-impact li:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+ul.n-list-impact.is-visible li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+ul.n-list-impact.is-visible li:hover {
+    border-left-color: #7c3aed;
+    border-color: #cbd5e1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+ul.n-list-impact li strong {
     display: block;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--np-dark);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
 }
 
-/* Any additional lists */
-.n-details-content ul:nth-of-type(n+3) {
+/* ========== Unstyled base lists fallback ========== */
+.n-details-content ul:not(.n-list-receive):not(.n-list-framework):not(.n-list-impact) {
     list-style: none;
     padding: 0;
     margin: 0 0 28px 0;
 }
 
-.n-details-content ul:nth-of-type(n+3) li {
+.n-details-content ul:not(.n-list-receive):not(.n-list-framework):not(.n-list-impact) li {
     padding: 8px 0 8px 24px;
     position: relative;
     color: var(--np-text-light);
     margin: 0;
 }
 
-.n-details-content ul:nth-of-type(n+3) li::before {
+.n-details-content ul:not(.n-list-receive):not(.n-list-framework):not(.n-list-impact) li::before {
     content: '—';
     position: absolute;
     left: 0;
@@ -357,10 +541,12 @@
 
     .n-product-summary {
         max-width: 100%;
+        margin: 0 auto;
     }
 
-    .n-details-content ul:first-of-type {
+    .n-details-split-layout {
         grid-template-columns: 1fr;
+        gap: 40px;
     }
 }
 
@@ -379,5 +565,9 @@
 
     .n-product-details-section {
         padding: 48px 20px 64px;
+    }
+
+    ul.n-list-receive {
+        grid-template-columns: 1fr;
     }
 }

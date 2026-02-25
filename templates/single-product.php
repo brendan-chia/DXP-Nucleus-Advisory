@@ -42,12 +42,15 @@
                         <label class="n-terms-checkbox">
                             <input type="checkbox" id="nucleus-terms-checkbox">
                             <span>I agree to the
-                              <a href="/wp-content/uploads/2026/02/Nucleus_Advisory_Privacy_Policy.pdf" target="_blank">Privacy Policy</a>,
-                              <a href="/wp-content/uploads/2026/02/Nucleus_Advisory_Delivery_Policy.pdf" target="_blank">Delivery Policy</a>
-                              and
-                              <a href="/wp-content/uploads/2026/02/Nucleus_Advisory_Refund_Policy.pdf" target="_blank">Refund Policy</a>.
+                                <a href="/wp-content/uploads/2026/02/Nucleus_Advisory_Privacy_Policy.pdf"
+                                    target="_blank">Privacy Policy</a>,
+                                <a href="/wp-content/uploads/2026/02/Nucleus_Advisory_Delivery_Policy.pdf"
+                                    target="_blank">Delivery Policy</a>
+                                and
+                                <a href="/wp-content/uploads/2026/02/Nucleus_Advisory_Refund_Policy.pdf"
+                                    target="_blank">Refund Policy</a>.
                             </span>
-                      </label>
+                        </label>
 
                     </div>
                     <div class="n-product-buy-button" id="nucleus-buy-button-wrapper">
@@ -71,25 +74,94 @@
         </div>
     <?php endif; ?>
 
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-      const checkbox = document.getElementById("nucleus-terms-checkbox");
-      const buttonWrapper = document.getElementById("nucleus-buy-button-wrapper");
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // --- Terms checkbox ---
+            const checkbox = document.getElementById("nucleus-terms-checkbox");
+            const buttonWrapper = document.getElementById("nucleus-buy-button-wrapper");
 
-      if (!checkbox || !buttonWrapper) return;
-      // disable button initially
-      buttonWrapper.style.opacity = "0.5";
-      buttonWrapper.style.pointerEvents = "none";
-      checkbox.addEventListener("change", function () {
-          if (this.checked) {
-              buttonWrapper.style.opacity = "1";
-              buttonWrapper.style.pointerEvents = "auto";
-          } else {
-              buttonWrapper.style.opacity = "0.5";
-              buttonWrapper.style.pointerEvents = "none";
-          }
-      });
-  });
-  </script>
+            if (checkbox && buttonWrapper) {
+                buttonWrapper.style.opacity = "0.5";
+                buttonWrapper.style.pointerEvents = "none";
+                checkbox.addEventListener("change", function () {
+                    if (this.checked) {
+                        buttonWrapper.style.opacity = "1";
+                        buttonWrapper.style.pointerEvents = "auto";
+                    } else {
+                        buttonWrapper.style.opacity = "0.5";
+                        buttonWrapper.style.pointerEvents = "none";
+                    }
+                });
+            }
+
+            // --- Auto-Stunning Split Layout Builder ---
+            // Automatically creates the side-by-side layout for the 2nd and 3rd sections
+            const detailsContainer = document.querySelector('.n-details-content');
+            if (detailsContainer) {
+                const targetH3s = detailsContainer.querySelectorAll('h3');
+                
+                // Only wrap if we have at least 3 sections
+                if (targetH3s.length >= 3) {
+                    const h3_2 = targetH3s[1];
+                    const h3_3 = targetH3s[2];
+
+                    const splitWrapper = document.createElement('div');
+                    splitWrapper.className = 'n-details-split-layout';
+                    
+                    const colLeft = document.createElement('div');
+                    colLeft.className = 'n-details-col n-details-col-left';
+
+                    const colRight = document.createElement('div');
+                    colRight.className = 'n-details-col n-details-col-right';
+
+                    splitWrapper.appendChild(colLeft);
+                    splitWrapper.appendChild(colRight);
+
+                    h3_2.parentNode.insertBefore(splitWrapper, h3_2);
+
+                    // Move everything from 2nd H3 to 3rd H3 into the left column
+                    let curr = h3_2;
+                    while(curr && curr !== h3_3) {
+                        let next = curr.nextSibling;
+                        colLeft.appendChild(curr);
+                        curr = next;
+                    }
+
+                    // Move everything from 3rd H3 onwards into the right column
+                    curr = h3_3;
+                    while(curr) {
+                        let next = curr.nextSibling;
+                        colRight.appendChild(curr);
+                        curr = next;
+                    }
+                }
+
+                // --- Assign robust CSS classes to lists ---
+                const colLeftUl = detailsContainer.querySelector('.n-details-col-left ul');
+                if (colLeftUl) colLeftUl.classList.add('n-list-framework');
+
+                const colRightUl = detailsContainer.querySelector('.n-details-col-right ul');
+                if (colRightUl) colRightUl.classList.add('n-list-impact');
+                
+                // The first UL that isn't inside our new split columns gets the "receive" class
+                const firstUl = detailsContainer.querySelector('ul:not(.n-list-framework):not(.n-list-impact)');
+                if (firstUl) firstUl.classList.add('n-list-receive');
+            }
+
+            // --- Scroll-reveal for lists ---
+            var lists = document.querySelectorAll('.n-details-content ul');
+            if (lists.length) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+                lists.forEach(function (el) { observer.observe(el); });
+            }
+        });
+    </script>
 
 </div>
