@@ -192,7 +192,7 @@ Table: `wp_nucleus_leads_testing` (created on plugin activation)
 | Issue | Solution |
 |-------|---------|
 | Page returns 404 | WP Admin → Settings → Permalinks → Save |
-| Styles not updating | Re-upload the plugin and hard refresh (`Ctrl+Shift+R`) |
+| Styles not updating | Bump the CSS version number in `nucleus-dxp.php` or `product-manager.php`, then re-upload the plugin |
 | Hero hidden by header | Increase top padding in the hero CSS (currently `160px` for products) |
 | Events not in GA4 | Check console for `✅ Tracking Active`; verify Measurement ID |
 | Form not submitting | Check console for errors; verify `admin-ajax.php` accessible |
