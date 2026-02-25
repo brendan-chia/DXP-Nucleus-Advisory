@@ -70,19 +70,23 @@ function nucleus_testing_page_shortcode()
 }
 add_shortcode('nucleus_testing_page', 'nucleus_testing_page_shortcode');
 
-// Enqueue page CSS and tracking JS on testing page AND single product pages
+// Enqueue page CSS and tracking JS on testing page, product pages, AND any page with a CF7 form
 function nucleus_dxp_enqueue_assets()
 {
-    $is_testing_lab = is_page('testing-lab');
-    $is_product_page = is_singular('nucleus_product');       // single product CPT pages
-    $is_products_page = nucleus_is_products_landing(); // detects [nucleus_products_landing] shortcode
+    $is_testing_lab   = is_page('testing-lab');
+    $is_product_page  = is_singular('nucleus_product');      // single product CPT pages
+    $is_products_page = nucleus_is_products_landing();       // detects [nucleus_products_landing] shortcode
+
+    // Detect any page that contains a CF7 form shortcode (consultation form, contact page, etc.)
+    global $post;
+    $has_cf7_form = is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'contact-form-7');
 
     if ($is_testing_lab) {
         wp_enqueue_style('nucleus-testing-page', NUCLEUS_DXP_URL . 'assets/css/testing-page.css', array(), '4.3');
     }
 
-    if ($is_testing_lab || $is_product_page || $is_products_page) {
-        wp_enqueue_script('nucleus-tracking', NUCLEUS_DXP_URL . 'assets/js/tracking.js', array(), '2.3', true);
+    if ($is_testing_lab || $is_product_page || $is_products_page || $has_cf7_form) {
+        wp_enqueue_script('nucleus-tracking', NUCLEUS_DXP_URL . 'assets/js/tracking.js', array(), '2.4', true);
     }
 }
 add_action('wp_enqueue_scripts', 'nucleus_dxp_enqueue_assets');

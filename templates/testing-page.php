@@ -18,7 +18,8 @@
                 AI-Driven Consulting Solutions
             </span>
             <h1>Transform Your Organization with <span class="text-gradient">AI-Powered</span> Talent Intelligence</h1>
-            <p class="hero-desc">Your trusted partner in organization and human capability consulting. Dynamic solutions with a relentless focus on enhancing your people and organization.</p>
+            <p class="hero-desc">Your trusted partner in organization and human capability consulting. Dynamic solutions
+                with a relentless focus on enhancing your people and organization.</p>
             <div class="hero-trust">
                 <div class="trust-item">
                     <span class="trust-icon">🏆</span>
@@ -158,7 +159,8 @@
         <h2>Harnessing <span class="text-gradient-light">Artificial Intelligence</span> to Revolutionize Talent</h2>
         <p>Pioneers in Malaysia — delivering exceptional results for businesses of all sizes.</p>
         <div class="ai-tagline">
-            We deploy state-of-the-art People Data Platform to optimize your talent processes and propel your organization towards unprecedented growth, fuelled by the best talent.
+            We deploy state-of-the-art People Data Platform to optimize your talent processes and propel your
+            organization towards unprecedented growth, fuelled by the best talent.
         </div>
     </div>
 </section>
@@ -170,7 +172,8 @@
             <div class="glimpse-left reveal fade-left">
                 <span class="section-tag">Discover More</span>
                 <h2>Get A Glimpse Of <span class="text-gradient">Nucleus Advisory</span> Expertise</h2>
-                <p>Experience how we integrate advanced AI-driven solutions, optimize efficiency, attract top talent, and foster sustained professional growth.</p>
+                <p>Experience how we integrate advanced AI-driven solutions, optimize efficiency, attract top talent,
+                    and foster sustained professional growth.</p>
                 <a href="#" class="btn-secondary">Explore Our Approach →</a>
             </div>
             <div class="glimpse-right reveal fade-right">
@@ -197,7 +200,7 @@
         <p>Ready to revolutionize your talent strategy with AI-fueled solutions?</p>
         <div class="cta-actions">
             <a href="#" class="btn-primary">Contact Us</a>
-            <a href="#" class="btn-outline download-brochure-btn">Download Brochure →</a>
+            <a href="/assessments/" class="btn-outline">View Product →</a>
         </div>
     </div>
 </section>

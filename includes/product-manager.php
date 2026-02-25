@@ -303,7 +303,7 @@ function nucleus_products_landing_shortcode($atts)
     ), $atts);
 
     // Enqueue CSS
-    wp_enqueue_style('nucleus-products-landing', NUCLEUS_DXP_URL . 'assets/css/products-landing.css', array(), '3.2');
+    wp_enqueue_style('nucleus-products-landing', NUCLEUS_DXP_URL . 'assets/css/products-landing.css', array(), '3.3');
 
     // Get all products
     $products = get_posts(array(
